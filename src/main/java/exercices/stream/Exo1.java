@@ -1,7 +1,10 @@
 package exercices.stream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
  ** Consigne **
@@ -17,6 +20,9 @@ class Exo1 {
     public static void main(String[] args) {
         Collection<String> result = mapToUppercase("aaron", "frank", "william", "gilliam");
         System.out.println(result);
+//        List<String> result2 = Arrays.asList("aaron", "frank", "william", "gilliam");
+
+        System.out.println(mapToUppercaseWithStream("aaron", "frank", "william", "gilliam"));
     }
 
     public static Collection<String> mapToUppercase(String... names) {
@@ -27,9 +33,11 @@ class Exo1 {
         return uppercaseNames;
     }
 
-    public static Collection<String> mapToUppercaseWithStream(String... names) {
-        // TODO
-        return new ArrayList<>();
+    public static List<String> mapToUppercaseWithStream(String... names) {
+        //Utilisation de Arrays pour remplacer les string
+        return  Arrays.stream(names)
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
     }
 
 }

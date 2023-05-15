@@ -1,6 +1,8 @@
 package exercices.stream;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -25,6 +27,7 @@ public class Exo4 {
 
         Person olderPerson = getOldestPerson(persons);
         System.out.println(olderPerson);
+        System.out.println(getOldestPersonWithStream(persons));
     }
 
     public static Person getOldestPerson(List<Person> people) {
@@ -39,7 +42,9 @@ public class Exo4 {
 
     // TODO
     public static Person getOldestPersonWithStream(List<Person> people) {
-        return null;
+        return people.stream()
+                .max(Comparator.comparingInt(Person::getAge))
+                .orElse(null);
     }
 }
 

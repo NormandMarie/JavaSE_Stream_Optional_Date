@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -31,6 +32,7 @@ public class Exo8 {
 
         Map<String, List<Person>> result = groupByNationality(persons);
         System.out.println(result);
+        System.out.println(groupByNationalityWithStream(persons));
     }
 
     public static Map<String, List<Person>> groupByNationality(List<Person> people) {
@@ -46,7 +48,8 @@ public class Exo8 {
 
     // TODO
     public static Map<String, List<Person>> groupByNationalityWithStream(List<Person> people) {
-        return null;
+        return people.stream()
+                .collect(Collectors.groupingBy(Person::getNationality));
     }
 
 

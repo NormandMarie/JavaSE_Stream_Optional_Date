@@ -22,6 +22,7 @@ public class Exo5 {
         List<Integer> numbers = asList(1, 2, 3, 4, 5);
         int result = calculate(numbers);
         System.out.println(result);
+        System.out.println(calculateWithStream(numbers));
     }
 
     public static int calculate(List<Integer> numbers) {
@@ -34,7 +35,9 @@ public class Exo5 {
 
     // TODO
     public static int calculateWithStream(List<Integer> numbers) {
-        return 0;
+
+        return numbers.stream()
+                .reduce(0, Integer::sum);
     }
 
 

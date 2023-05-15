@@ -2,6 +2,7 @@ package exercices.stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -20,8 +21,11 @@ public class Exo3 {
 
     public static void main(String[] args) {
         List<List<String>> list = asList(asList("Viktor", "Farcic"), asList("John", "Doe", "Third"));
+        System.out.println(list);
         List<String> result = transform(list);
         System.out.println(result);
+
+        System.out.println(transformWithStream(list));
     }
 
     public static List<String> transform(List<List<String>> collection) {
@@ -36,7 +40,10 @@ public class Exo3 {
 
     // TODO
     public static List<String> transformWithStream(List<List<String>> collection) {
-        return null;
+
+        return collection.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
 
 

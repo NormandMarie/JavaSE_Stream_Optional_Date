@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -32,6 +33,7 @@ public class Exo7 {
 
         Map<Boolean, List<Person>> result = partitionAdults(persons);
         System.out.println(result);
+        System.out.println(partitionAdultsWithStream(persons));
     }
 
     public static Map<Boolean, List<Person>> partitionAdults(List<Person> people) {
@@ -46,9 +48,9 @@ public class Exo7 {
 
     // TODO
     public static Map<Boolean, List<Person>> partitionAdultsWithStream(List<Person> people) {
-        return null;
+        return people.stream()
+                .collect(Collectors.partitioningBy(p -> p.getAge() >= 18));
     }
-
-
 }
+
 

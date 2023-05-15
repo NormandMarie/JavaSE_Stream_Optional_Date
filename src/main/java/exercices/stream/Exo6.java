@@ -3,6 +3,7 @@ package exercices.stream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -28,6 +29,7 @@ public class Exo6 {
 
         Set<String> olderPerson = getKidNames(persons);
         System.out.println(olderPerson);
+        System.out.println(getKidNamesWithStream(persons));
     }
 
     public static Set<String> getKidNames(List<Person> people) {
@@ -40,9 +42,11 @@ public class Exo6 {
         return kids;
     }
 
-    // TODO
     public static Set<String> getKidNamesWithStream(List<Person> people) {
-        return null;
+        return people.stream()
+                .filter(person ->person.getAge() <18)
+                .map(Person::getName)
+                .collect(Collectors.toSet());
     }
 
 

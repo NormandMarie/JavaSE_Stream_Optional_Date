@@ -1,5 +1,7 @@
 package exercices.stream;
 
+import java.util.Arrays;
+
 /*
  ** Consigne **
  *
@@ -35,7 +37,10 @@ public class Exo2 {
 
     // TODO
     public static long getTotalNumberOfLettersOfNamesLongerThanFiveWithStream(String... names) {
-        return 0;
+        return Arrays.stream(names)
+                .filter(name -> name.length() > 5)
+                .mapToLong(name -> name.length())
+                .sum();
     }
 }
 

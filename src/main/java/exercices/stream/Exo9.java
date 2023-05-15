@@ -1,6 +1,7 @@
 package exercices.stream;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
@@ -26,6 +27,7 @@ public class Exo9 {
 
         String result = namesToString(persons);
         System.out.println(result);
+        System.out.println("names: " + namesToStringWithStream(persons));
     }
 
     public static String namesToString(List<Person> people) {
@@ -43,7 +45,9 @@ public class Exo9 {
 
     // TODO
     public static String namesToStringWithStream(List<Person> people) {
-        return null;
+        return people.stream()
+                .map(Person::getName)
+                .collect(Collectors.joining(", "));
     }
 
 
