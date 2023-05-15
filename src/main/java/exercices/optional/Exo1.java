@@ -54,11 +54,13 @@ class Exo1 {
     }
 
     public Optional<String> findPhoneNumberByNameWithOptional(String name) {
-        return null;
+        String phoneNumber = findPhoneNumberByName(name);
+        return Optional.ofNullable(phoneNumber);
     }
 
     public Optional<String> findNameByPhoneNumberWithOptional(String phoneNumber) {
-        return null;
+        String name = findNameByPhoneNumber(phoneNumber);
+        return Optional.ofNullable(name);
     }
 
     public String findPhoneNumberByName(String name) {

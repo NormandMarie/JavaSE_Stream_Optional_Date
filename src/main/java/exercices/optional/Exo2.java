@@ -54,9 +54,13 @@ class Exo2 {
         }
     }
 
-    public Optional<String> findPhoneNumberByNameAndPunishIfNothingFoundWithOptional(String name) throws Throwable {
-        //TODO
-        return null;
+    public Optional<String> findPhoneNumberByNameAndPunishIfNothingFoundWithOptional(String name)  {
+        for (Map.Entry<String, String> entry : phoneBookEntries.entrySet()) {
+            if (entry.getKey().equalsIgnoreCase(name)) {
+                return Optional.of(entry.getValue());
+            }
+        }
+        throw new IllegalArgumentException("No phone number found");
     }
 
 
