@@ -1,5 +1,7 @@
 package exercices.date;
 
+import java.time.LocalDate;
+
 /*
  ** Consigne **
  *
@@ -15,13 +17,18 @@ package exercices.date;
 class Exo11 {
 
     public static void main(String[] args) {
-        Object date1 = null;
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
 
-//        if(date1 ...date2){
-//            System.out.println("L'année " + year + " est bissextile");
-//        }else{
-//            System.out.println("L'année " + year + " n'est pas bissextile");
-//        }
+        int nextYear = currentYear + 5;
+
+        boolean isLeapYear = LocalDate.of(nextYear, 1, 1).isLeapYear();
+
+        if (isLeapYear) {
+            System.out.println("L'année "+nextYear+" est bissextile.");
+        } else {
+            System.out.println("L'année "+nextYear+" n'est pas bissextile.");
+        }
     }
 }
 

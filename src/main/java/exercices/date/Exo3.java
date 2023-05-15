@@ -1,5 +1,8 @@
 package exercices.date;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /*
  ** Consigne **
  *
@@ -13,9 +16,12 @@ package exercices.date;
 class Exo3 {
 
     public static void main(String[] args) {
-//        Object date = ;
-//        System.out.println("Date du premier jour de ma formation java 8" + date);
+        LocalDate dateFormation = LocalDate.of(2023, 3, 6);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = dateFormation.format(formatter);
+
+        System.out.println("Date du premier jour de la formation Java 8 : " + formattedDate);
     }
-
-
 }
+

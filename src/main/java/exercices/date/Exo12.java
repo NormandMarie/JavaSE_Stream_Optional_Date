@@ -1,6 +1,12 @@
 package exercices.date;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
 
 /*
  ** Consigne **
@@ -20,33 +26,38 @@ import java.time.LocalDateTime;
 class Exo12 {
 
     public static void main(String[] args) {
-        //       1er mars 2014
-        Object date1 = null;
 
-        //      Aujourd'hui
-        Object today = null;
+        LocalDate date2 = LocalDate.of(2014, 3, 1);
 
-//        1)
-        int years = 0;
-        int months = 0;
-        int days = 0;
+
+        LocalDate now = LocalDate.now();
+
+        Period period = Period.between(date2,now);
+
+       int years = period.getYears();
+       int months = period.getMonths();
+
+
         System.out.println("il s'est écoulé " + years + " années et " + months + " mois");
 
-//        2)
-        //       1er mars 2014 à 19h30 et 50 secondes
-        Object date2 = null;
-        //      Aujourd'hui avec l'heure
-        Object today2 = null;
-        long totalSeconds = 0;
-        long totalHours = 0;
+
+        LocalDateTime dateSec =LocalDateTime.of(2014, 3, 1,19,30,50);
+
+        LocalDateTime now2 = LocalDateTime.now();
+
+        Duration duration = Duration.between(dateSec, now2);
+        long totalSeconds = duration.getSeconds();
+        long totalHours = duration.toHours();
+
         System.out.println("il s'est écoulé au total " + totalSeconds + " secondes, ou bien encore, " + totalHours + " heures");
 
 //        3)
-        LocalDateTime date3 = null;
-        LocalDateTime today3 = null;
-        long hours = 0;
-        long minutes = 0;
-        long seconds = 0;
+        LocalDateTime date1 = LocalDateTime.of(1998, 2, 1, 16, 15, 0);
+        LocalDateTime now3 = LocalDateTime.now();
+
+        long hours = ChronoUnit.HOURS.between(date1,  now3);
+        long minutes = ChronoUnit.MINUTES.between(date1,  now3);
+        long seconds = ChronoUnit.SECONDS.between(date1,  now3);
 
         System.out.println("il s'est écoulé " + hours + " heures, " + minutes + " minutes et " + seconds + " secondes");
 

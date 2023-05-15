@@ -1,5 +1,9 @@
 package exercices.date;
 
+import java.time.LocalDate;
+import java.time.MonthDay;
+import java.time.format.DateTimeFormatter;
+
 /*
  ** Consigne **
  *
@@ -19,15 +23,22 @@ class Exo5 {
 
     // TODO : Les types Object peuvent doivent être remplacé par les bon types.
     public static void main(String[] args) {
-//        Object date1 = ;
-//        Object date2 = ;
-//        MonthDay birthday;
+        LocalDate birthday = LocalDate.of(1998, 2, 1);
+        LocalDate today = LocalDate.now();
 
-//        if(currentMonthDay ... birthday){
-        System.out.println("C'est votre anniversaire");
-//        }else {
-        System.out.println("Votre anniversaire n'est pas encore arrivé");
-//        }
+        MonthDay currentMonthDay = MonthDay.from(today);
+        MonthDay birthdayMonthDay = MonthDay.from(birthday);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("Date de votre anniversaire : " + birthday.format(formatter));
+        System.out.println("Date du jour : " + today.format(formatter));
+
+        if (currentMonthDay.equals(birthdayMonthDay)) {
+            System.out.println("C'est votre anniversaire !");
+        } else {
+            System.out.println("Votre anniversaire n'est pas encore arrivé.");
+        }
     }
 
 

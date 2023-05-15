@@ -1,5 +1,8 @@
 package exercices.date;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /*
@@ -15,15 +18,20 @@ class Exo1 {
 
     public static void main(String[] args) {
         Date today = getToday();
-        System.out.println("Date d'aujourd'hui :" + today);
+        System.out.println("Date d'aujourd'hui : " + today);
+
+        String todayWithJava8 = getTodayWithJava8();
+        System.out.println("Date d'aujourd'hui avec Java 8 : " + todayWithJava8);
     }
 
     public static Date getToday() {
         return new Date();
     }
 
-    // TODO : (Vous devez remplacer Object par le bon type de retour)
-    public static Object getTodayWithJava8() {
-        return null;
+    public static String getTodayWithJava8() {
+        LocalDateTime today = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E MMM d HH:mm:ss yyyy");
+        String formattedDate = today.format(formatter);
+        return formattedDate;
     }
 }

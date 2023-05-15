@@ -1,5 +1,8 @@
 package exercices.date;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /*
  ** Consigne **
  *
@@ -12,8 +15,13 @@ package exercices.date;
 class Exo7 {
 
     public static void main(String[] args) {
-        Object departure = null;
-        System.out.println("Date et heure exacte du décollage :" + departure);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime departureDateTime = now.plusDays(3).plusHours(5);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedDateTime = departureDateTime.format(formatter);
+
+        System.out.println("Date et heure exacte du décollage : " + formattedDateTime);
     }
 
 }

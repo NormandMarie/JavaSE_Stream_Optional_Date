@@ -1,5 +1,8 @@
 package exercices.date;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 /*
  ** Consigne **
  *
@@ -17,15 +20,16 @@ package exercices.date;
 class Exo8 {
 
     public static void main(String[] args) {
-        //        1)
-        Object today = null;
+        LocalDate today = LocalDate.now();
+        LocalDate oneWeekLater = today.plus(1, ChronoUnit.WEEKS);
+        LocalDate oneYearAgo = today.minus(1, ChronoUnit.YEARS);
+
         System.out.println("La date du jour est : " + today);
-        Object nextWeek = null;
-        System.out.println("La date après un \"week\" est : " + nextWeek);
 
-        //        2)
-        Object lastTime = null;
-        System.out.println("La date à laquelle nous nous sommes vu est le  : " + lastTime);
+        System.out.println("La date après une semaine est : " + oneWeekLater);
+
+
+        System.out.println("La date à laquelle nous nous sommes vu est le  : " + oneYearAgo);
+
     }
-
 }

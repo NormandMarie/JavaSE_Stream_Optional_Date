@@ -1,5 +1,8 @@
 package exercices.date;
 
+
+import java.time.Clock;
+import java.time.Instant;
 /*
  ** Consigne **
  *
@@ -15,11 +18,15 @@ package exercices.date;
 class Exo9 {
 
     public static void main(String[] args) {
-        Object clock = null;
-        System.out.println("Timestamp UTC : " + clock);
 
-        Object defaultClock = null;
-        System.out.println("Timestamp basé sur la zone du Système : " + defaultClock);
+        Clock utcClock = Clock.systemUTC();
+        Instant utcTimestamp = Instant.now(utcClock);
+
+        Instant defaultTimestamp = Instant.now();
+        // sans fuseau horaire pris en compte
+        System.out.println("Timestamp UTC : " + utcTimestamp);
+        // avec fuseau horaire
+        System.out.println("Timestamp basé sur la zone du Système : " +defaultTimestamp);
     }
 
 }

@@ -1,5 +1,8 @@
 package exercices.date;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /*
  ** Consigne **
  *
@@ -15,13 +18,16 @@ package exercices.date;
 class Exo13 {
 
     public static void main(String[] args) {
-        Object date = null;
-        String dateStr = null;
-        Object dateInDate = null;
+        // Conversion de la date en chaîne de caractères
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String dateString = now.format(formatter);
+        System.out.println("Date du jour en chaîne de caractères : " + dateString);
 
-        System.out.println("La Date en string:" + dateStr);
+        // Reconversion de la chaîne en date
+        LocalDateTime parsedDate = LocalDateTime.parse(dateString, formatter);
+        System.out.println("Date reconvertie : " + parsedDate);
 
-        System.out.println("La Date en type date:" + dateInDate);
     }
 }
 
